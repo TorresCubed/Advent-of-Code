@@ -2,7 +2,6 @@ import {readTextFile, readTextSample} from "../ReadInput";
 
 const day = __filename[__filename.length - 4].toString()
 export const Part1 = async () => {
-    const start = performance.now();
     const input = await readTextFile(day)
     // const input = await readTextSample()
     
@@ -32,14 +31,10 @@ export const Part1 = async () => {
         }
         return true;
     })
-    const answer = results.map(result => result[(result.length - 1)/2]).reduce((acc , val) => acc + val);
-    
-    const end = performance.now();
-    console.log(answer, " in ", (end-start).toFixed(2), " milliseconds");
+    return results.map(result => result[(result.length - 1)/2]).reduce((acc , val) => acc + val);
 }
 
 export const Part2 = async () => {
-    const start = performance.now();
     const input = await readTextFile(day)
     // const input = await readTextSample()
 
@@ -70,13 +65,12 @@ export const Part2 = async () => {
         return false;
     })
     
-    const answer = results.map(result => result.sort((a,b) => rules[a]?.includes(b) ? -1 : rules[b]?.includes(a) ? 1 : 0))
+    return results.map(result => result.sort((a,b) => rules[a]?.includes(b) ? -1 : rules[b]?.includes(a) ? 1 : 0))
         .map(result => result[(result.length - 1)/2])
         .reduce((acc , val) => acc + val);
-    const end   = performance.now();
-    console.log(answer, " in ", (end-start).toFixed(2), " milliseconds");
 }
 
 export const Tests = async () => {
 
 }
+

@@ -1,9 +1,8 @@
 import {readTextFile, readTextSample} from "../ReadInput";
 
 const day = __filename[__filename.length - 4].toString()
+
 export const Part1 = async () => {
-    const start = performance.now();
-    
     const input = await readTextFile(day)
     // const input = await readTextSample()
     
@@ -34,15 +33,10 @@ export const Part1 = async () => {
         count += safe ? 1 : 0;
     })
 
-    const answer = count
-
-    const end = performance.now();
-    console.log(answer, " in ", (end-start).toFixed(2), " milliseconds");
+     return count
 }
 
 export const Part2 = async () => {
-    const start = performance.now();
-    
     const input = await readTextFile(day)
     // const input = await readTextSample()
 
@@ -76,10 +70,7 @@ export const Part2 = async () => {
         count += reportResult ? 1 : 0;
     })
 
-    const answer = count
-
-    const end = performance.now();
-    console.log(answer, " in ", (end-start).toFixed(2), " milliseconds");
+    return count
 }
 
 const checkValues = (report: number[]) => {

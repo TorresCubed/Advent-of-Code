@@ -3,8 +3,6 @@ import {readTextFile, readTextSample} from "../ReadInput";
 const day = __filename[__filename.length - 4].toString()
 
 export const Part1 = async () => {
-    const start = performance.now();
-
     const input = await readTextFile(day)
     // const input = await readTextSample()
     
@@ -56,15 +54,10 @@ export const Part1 = async () => {
         allRows.push(currentStringReverseDiamond.join(""));
     }
 
-    const answer = CountMatches(allRows)
-
-    const end = performance.now();
-    console.log(answer, " in ", (end-start).toFixed(2), " milliseconds");
+    return CountMatches(allRows)
 }
 
 export const Part2 = async () => {
-    const start = performance.now();
-    
     const input = await readTextFile(day)
     // const input = await readTextSample()
 
@@ -81,10 +74,7 @@ export const Part2 = async () => {
         }
     }
     
-    const answer = count
-
-    const end = performance.now();
-    console.log(answer, " in ", (end-start).toFixed(2), " milliseconds");
+    return count
 }
 
 const CountMatches = (rows: string[]) => {

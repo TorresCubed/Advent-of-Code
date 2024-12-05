@@ -59,8 +59,16 @@ const main = async () => {
 
     for (const day of days) {
         console.log(`===== Day Number ${num} solutions in progress =====`);
-        await day.Part1();
-        await day.Part2();
+        
+        const start1 = performance.now();
+        const answer1 = await day.Part1();
+        const end1 = performance.now();
+        console.log(answer1, " in ", (end1-start1).toFixed(2), " milliseconds");
+        
+        const start2 = performance.now();
+        const answer2 = await day.Part2();
+        const end2 = performance.now();
+        console.log(answer2, " in ", (end2-start2).toFixed(2), " milliseconds");
         await day.Tests();
         
         num++;

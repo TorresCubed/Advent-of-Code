@@ -2,8 +2,6 @@ import {readTextFile} from "../ReadInput";
 
 const day = __filename[__filename.length - 4].toString()
 export const Part1 = async () => {
-    const start = performance.now()
-    
     const input = await readTextFile(day)
     // const sample = await readTextSample()
     
@@ -27,15 +25,10 @@ export const Part1 = async () => {
         total += Math.abs(arrayOne[i] - arrayTwo[i]);
     }
 
-    const answer = total
-
-    const end = performance.now();
-    console.log(answer, " in ", (end-start).toFixed(2), " milliseconds");
+    return total
 }
 
 export const Part2 = async () => {
-    const start = performance.now()
-    
     const input = await readTextFile(day)
 
     const set: Set<number> = new Set();
@@ -55,10 +48,7 @@ export const Part2 = async () => {
         total += value * (dictionary.get(value) ?? 0);
     })
     
-    const answer = total
-
-    const end = performance.now();
-    console.log(answer, " in ", (end-start).toFixed(2), " milliseconds");
+    return total
 }
 
 export const Tests = async () => {

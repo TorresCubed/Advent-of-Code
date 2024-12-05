@@ -2,8 +2,6 @@ import {readTextFile, readTextSample} from "../ReadInput";
 
 const day = __filename[__filename.length - 4].toString()
 export const Part1 = async () => {
-    const start = performance.now();
-    
     const input = await readTextFile(day)
     // const input = await readTextSample()
     
@@ -16,22 +14,15 @@ export const Part1 = async () => {
         total += parseInt(numbers[0]) * parseInt(numbers[1]);
     })
     
-    const answer = total
-
-    const end = performance.now();
-    console.log(answer, " in ", (end-start).toFixed(2), " milliseconds");
+    return total;
 }
 
 export const Part2 = async () => {
-    const start = performance.now();
     const input = await readTextFile(day)
     // const input = await readTextSample()
     
 
-    const answer = trimString(input)
-
-    const end = performance.now();
-    console.log(answer, " in ", (end-start).toFixed(2), " milliseconds");
+    return trimString(input)
 }
 
 const trimString = (input: string) => {
@@ -70,4 +61,3 @@ export const Tests = async () => {
 
 }
 
-//attempts: 66505565, 53783319
