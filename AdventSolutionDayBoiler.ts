@@ -1,6 +1,6 @@
 import {readTextFile, readTextSample} from "../ReadInput";
 
-const day = __filename[__filename.length - 4].toString()
+const day = __filename.substring(__filename.length - 5,__filename.length - 3)
 
 export const Part1 = async () => {
     const input = await readTextFile(day)
