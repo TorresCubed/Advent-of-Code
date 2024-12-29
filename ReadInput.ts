@@ -1,6 +1,6 @@
 import {promises as fs} from 'fs';
 
-export const createTextFiles = async () => {
+const createTextFiles = async () => {
     const reject  = 'Please don\'t repeatedly request this endpoint before it unlocks! The calendar countdown is synchronized with the server time; the link will be enabled on the calendar the instant this puzzle becomes available.'
     const easternTime = new Date(new Date().toLocaleString("en-US", { timeZone: "America/New_York" }));
 
@@ -11,7 +11,7 @@ export const createTextFiles = async () => {
         days = easternTime.getDate();
     }
     
-    for (let day = 1; day <= days; day++) {
+    for (let day = 1; day <= (days < 25 ? days : 25); day++) {
         const dirPath = `AdventOfCodeDay${day}`
         const textPath = `AdventOfCodeDay${day}/AdventInputDay${day}.txt`
         const codePath = `AdventOfCodeDay${day}/AdventSolutionDay${day}.ts`
@@ -60,4 +60,6 @@ export const readTextSample = async () => {
     }
 }
 
-createTextFiles().then(r => r)
+if(require.main === module) {
+    createTextFiles().then(r => r)
+}

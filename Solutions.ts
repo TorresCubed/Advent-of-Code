@@ -31,9 +31,11 @@ const importedDays = [
 
 async function loadModules(count: number) {
     // Now, `importedModules` will be an array of the imported modules
-    return await Promise.all(
+    const promises =  await Promise.all(
         importedDays.slice(0, count).map((modulePath) => import(modulePath))
     );
+    
+    return promises
 }
 
 const main = async () => {
@@ -56,7 +58,8 @@ const main = async () => {
     const days = await loadModules(count);
 
     let num = 1;
-
+    
+    const fullPerformanceStart = performance.now();
     for (const day of days) {
         console.log(`===== Day Number ${num} solutions in progress =====`);
         
@@ -73,6 +76,9 @@ const main = async () => {
         
         num++;
     }
+    const fullPerformanceEnd = performance.now();
+
+    console.log(`Year completed in ${(fullPerformanceEnd - fullPerformanceStart).toFixed(2)} milliseconds`);
 }
 
 main()
